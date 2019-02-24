@@ -1,0 +1,98 @@
+header{
+	background-color:#2d313d;
+}
+.header {
+    max-width: 960px;
+    margin: 0 auto;
+}
+.headerMin {
+    display: none;
+    color: white;
+    text-align: center;
+}
+.headerMin i {
+    font-size: 36px;
+    padding: 32px 0;
+}
+.headerMin .logoWhite {
+    margin-left: 10px;
+}
+.headerMin img {
+    position: relative;
+    top: 16px;
+}
+.headerMin span {
+    font: 36px Arial;
+    margin: 0 10px 0 10px;
+}
+.headerMin img {
+    position: relative;
+    top: 16px;
+}
+.userPhotoBig {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+.header div{
+	float:right;
+	color: #727989;
+    font: 14px Arial;
+}
+.logo{
+	width:32px;
+	height:20px;
+	margin:18px 0 18px 6px
+}
+.header div a {
+    text-decoration: none;
+    color: #727989;
+}
+.header div .city {
+    border-bottom: dashed 1px;
+    margin: 0 6px 0 22px;
+}
+.header div a {
+    text-decoration: none;
+    color: #727989;
+}
+.header div .toggleMin {
+    display: none;
+    padding-left: 10px;
+    margin-right: 10px;
+    outline: none;
+    -webkit-appearance: none;
+    font: 12px Arial;
+    width: 150px;
+    height: 14px;
+    border: solid #d6d9e1 1px;
+    border-radius: 5px;
+}
+.header div form {
+    display: inline-block;
+    height: 14px;
+}
+.fa-search {
+    padding-right: 5px;
+    cursor: pointer;
+}
+.fa-angle-down, .fa-envelope {
+    padding-right: 32px;
+}
+.fa-bell {
+    padding-right: 27px;
+}
+.fa-angle-down, .fa-envelope {
+    padding-right: 32px;
+}
+.header div .userPhoto {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 10px;
+    padding: 0 24px 0 10px;
+    border-radius: 4px;
+}
+@media screen and (max-width: 960px){.header{margin:0}}
+@media screen and (max-width: 500px){.header{display:none}.headerMin{display:block}}
