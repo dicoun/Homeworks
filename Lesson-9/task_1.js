@@ -1,21 +1,21 @@
 function Animal(name) {
-    this.foodAmount = 50;
+    this._foodAmount = 50;
 	this.name = name;
 }
-Animal.prototype.getFormattedFoodAmount = function() {
-	return this.foodAmount + 'гр.';
+Animal.prototype._getFormattedFoodAmount = function() {
+	return this._foodAmount + 'гр.';
 }
 Animal.prototype.dailyNorm = function(amount) {
-	if (!arguments.length) return this.foodAmount;
+	if (!arguments.length) return this._foodAmount;
 
 	if (amount < 50 || amount > 500) {
 		return 'Недопустимое количество корма.';
 	}
 
-	this.foodAmount = amount;
+	this._foodAmount = amount;
 };
 Animal.prototype.feed = function() {
-	return 'Насыпаем в миску ' + this.getFormattedFoodAmount() + ' корма.';
+	return 'Насыпаем в миску ' + this._getFormattedFoodAmount() + ' корма.';
 };
 
 function Cat(name) {

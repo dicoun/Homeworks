@@ -1,33 +1,51 @@
-function Clone(Entity){
+function clone(Entity){
 	if(Array.isArray(Entity)){
 		var Arr = [];
 		for(var i = 0; i < Entity.length; i++){
 			if(typeof Entity[i] == 'object'){
-				Arr[i] = Clone(Entity[i]);
+				Arr[i] = clone(Entity[i]);
 			}
-			Arr[i] = Entity[i];
+			else{
+				Arr[i] = Entity[i];
+			}
 		}
-		Arr.__proto__ = Entity.__proto__;
 		return Arr;
 	}
 	if((!!Entity) && (Entity.constructor === Object)){
 		var Obj = {};
 		for(var key in Entity){
 			if(typeof Entity[key] == 'object'){
-				Obj[key] = Clone(Entity[key]);
+				Obj[key] = clone(Entity[key]);
 			}
-			Obj[key] = Entity[key];
+			else{
+				Obj[key] = Entity[key];	
+			}		
 		}
-		Obj.__proto__ = Entity.__proto__;
 		return Obj;
 	}
 }
 
-var Entity = {
-				key: 99,
-				string: 'mother',
-				boolean: true,
-				massive: [2,4,'string', {num: 3, bool: false}],
-				obj: {jump: 'rabbit', run: {run: 'cat'}, __proto__: {a: 'b'}}
-			};
-Clone(Entity);
+var initialObj = {
+    string: 'Vasya',
+    number: 30,
+    boolean: true,
+    undefined: undefined,
+    null: null,
+    array: [1, 2, 3],
+    object: {
+        string2: 'Petrov',
+        object2: {
+            array2: [{}, {}]
+        },
+        object3: {}
+    },
+    method: function() {
+        alert('Hello');
+    }
+};
+
+var clonedObj = clone(initialObj);
+clonedObj.object.object2.array2[1].name = 'Vasya';
+clonedObj.array.push(2);
+console.log(initialObj);
+console.log(clonedObj);
