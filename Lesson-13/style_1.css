@@ -1,0 +1,9 @@
+table {
+	border: 1px solid black;
+	border-spacing: 0.1px;
+}
+div {
+	width: 100px;
+    height: 100px;
+	border: 1px solid black;
+}

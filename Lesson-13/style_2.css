@@ -1,0 +1,12 @@
+table {
+	border: 1px solid black;
+	border-spacing: 0.1px;
+}
+td {
+	height: 30px;
+	width: 200px;
+	text-align: center;
+}
+input {
+	margin: 0px 0px 0px 13px;
+}
