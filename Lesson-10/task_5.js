@@ -4,14 +4,13 @@ function maxIterationCount(text){
 	textArr = textStr.split(' ');
 	console.log(textArr);
 	var arr = [];
-	var filterArr = [];
 	for(var i = 0; i < textArr.length; i++){
-		
-		filterArr = textArr.filter(function(value, index, textArr){
-			if(value == textArr[i]){
-				return true;
+		var filterArr = [];
+		for(key in textArr){
+			if(textArr[key] == textArr[i]){
+				filterArr.push(textArr[i]);
 			}
-		});
+		}
 		if(filterArr.length > arr.length){
 			arr = filterArr;
 		}

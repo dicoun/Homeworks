@@ -1,8 +1,12 @@
 function lettersCount(text){
 	var textArr = text.split(/[.!?]/g);
-	textArr = textArr.filter(function(value, index, textArr){
-		return value.length;
-	});
+	var arr = [];
+	for(key in textArr){
+		if(textArr[key].length > 0){
+			arr.push(textArr[key]);
+		}
+	}
+	textArr = arr;
 	var letters = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz';
 	for(var i = 0; i < textArr.length; i++){
 		var count = 0;
