@@ -76,7 +76,7 @@ function saveMark(){
 	}
 	else{
 		pText.setAttribute('data-number', 1);
-		pText.innerHTML = '<b>Отметка 1: &ensp;</b>' + mm + ' : ' + ss + ' . ' + msms;
+		pText.innerHTML = '<b>Отметка 1: &ensp;</b>' + mm + ' : ' + ss + ' : ' + msms;
 	}
 	document.body.appendChild(pText);
 }
@@ -93,7 +93,7 @@ function reset(){
 	hiddenDiv.className = 'hidden';
 	document.getElementById('mm').textContent = '00';
 	document.getElementById('ss').textContent = '00';
-	document.getElementById('msms').textContent = '000';
+	document.getElementById('msms').textContent = '00';
 	localStorage.removeItem('stopTime');
 	localStorage.removeItem('state');
 	startBtn.disabled = false;
@@ -114,31 +114,32 @@ function stopwatch(startTime){
 }
 //функция установки времени в секундомер
 function setTime(startTime, msms,ss, mm){
-	if(startTime < 10){
-		msms.innerText = '00' + startTime;
-		return true;
-	}
-	else if(startTime < 100){
-		msms.innerText = '0' + startTime;
+	if(startTime < 100){
+		var rest = startTime%10;
+		var unit = (startTime - rest)/10;
+		msms.innerText = '0' + unit;
 		return true;
 	}
 	//если меньше 1с
 	else if(startTime < 1000){
-		msms.innerText = startTime;
+		var rest = startTime%10;
+		var unit = (startTime - rest)/10;
+		msms.innerText = unit;
 		return true;
 	}
 	//если меньше 10с
 	else if(startTime < 10000){
 		var rest = startTime%1000;
 		var unit = (startTime - rest)/1000;
-		if(rest < 10){
-			msms.innerText = '00' + rest;
-		}
-		else if(rest < 100){
-			msms.innerText = '0' + rest;
+		if(rest < 100){
+			var rest2 = rest%10;
+			var unit2 = (rest - rest2)/10;
+			msms.innerText = '0' + unit2;
 		}
 		else if(rest < 1000){
-			msms.innerText = rest;
+			var rest2 = rest%10;
+			var unit2 = (rest - rest2)/10;
+			msms.innerText = unit2;
 		}
 		ss.innerText = '0' + unit;
 		return true;
@@ -147,14 +148,15 @@ function setTime(startTime, msms,ss, mm){
 	else if(startTime < 60000){
 		var rest = startTime%1000;
 		var unit = (startTime - rest)/1000;
-		if(rest < 10){
-			msms.innerText = '00' + rest;
-		}
-		else if(rest < 100){
-			msms.innerText = '0' + rest;
+		if(rest < 100){
+			var rest2 = rest%10;
+			var unit2 = (rest - rest2)/10;
+			msms.innerText = '0' + unit2;
 		}
 		else if(rest < 1000){
-			msms.innerText = rest;
+			var rest2 = rest%10;
+			var unit2 = (rest - rest2)/10;
+			msms.innerText = unit2;
 		}
 		ss.innerText = unit;
 		return true;
@@ -172,14 +174,15 @@ function setTime(startTime, msms,ss, mm){
 		else if(unitSs < 60){
 			ss.innerText = unitSs;
 		}
-		if(restMs < 10){
-			msms.innerText = '00' + restMs;
-		}
-		else if(restMs < 100){
-			msms.innerText = '0' + restMs;
+		if(restMs < 100){
+			var rest2 = restMs%10;
+			var unit2 = (restMs - rest2)/10;
+			msms.innerText = '0' + unit2;
 		}
 		else if(restMs < 1000){
-			msms.innerText = restMs;
+			var rest2 = restMs%10;
+			var unit2 = (restMs - rest2)/10;
+			msms.innerText = unit2;
 		}
 		return true;
 	}
@@ -196,14 +199,15 @@ function setTime(startTime, msms,ss, mm){
 		else if(unitSs < 60){
 			ss.innerText = unitSs;
 		}
-		if(restMs < 10){
-			msms.innerText = '00' + restMs;
-		}
-		else if(restMs < 100){
-			msms.innerText = '0' + restMs;
+		if(restMs < 100){
+			var rest2 = restMs%10;
+			var unit2 = (restMs - rest2)/10;
+			msms.innerText = '0' + unit2;
 		}
 		else if(restMs < 1000){
-			msms.innerText = restMs;
+			var rest2 = restMs%10;
+			var unit2 = (restMs - rest2)/10;
+			msms.innerText = unit2;
 		}
 		return true;
 	}
@@ -213,7 +217,7 @@ window.onunload = function(e){
 	var mm = document.getElementById('mm').textContent;
 	var ss = document.getElementById('ss').textContent;
 	var msms = document.getElementById('msms').textContent;
-	var stopTime = +mm*60000 + +ss*1000 + +msms;
+	var stopTime = +mm*60000 + +ss*1000 + +msms*10;
 	clearInterval(timerId);
 	stopTime && localStorage.setItem('stopTime', stopTime);
 	var state = startBtn.getAttribute('data-state');
