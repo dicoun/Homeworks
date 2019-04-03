@@ -1,12 +1,10 @@
 function paintTabs(data, container, body){
-	
 	var tabCount = data.length;
-	if(tabCount){
-		
+	
+	if(tabCount){	
 		var divLinks = document.createElement('div');
 		divLinks.className = 'tab';
-		for(var i = 0; i < tabCount; i++){
-			
+		for(var i = 0; i < tabCount; i++){	
 			var id = data[i].id;
 			var tabLink = document.createElement('button');
 			tabLink.className = 'tablinks';
@@ -70,8 +68,7 @@ function paintTabs(data, container, body){
 
 var button = document.getElementById('button');
 
-button.addEventListener("click", function(){
-	
+button.addEventListener("click", function(){	
 	var body = document.getElementsByTagName('body')[0];
 	var container = document.getElementById('container');
 	var tabLinkEls = document.getElementsByClassName('tab');
@@ -92,7 +89,6 @@ button.addEventListener("click", function(){
 		}
 	}
 	if(localStorage.length){
-		
 		var data = [];
 		var key, value;
 		for(var i = 0; i < localStorage.length; i++){
